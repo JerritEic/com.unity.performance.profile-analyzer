@@ -298,8 +298,8 @@ To compare two data sets:
         [SerializeField]
         bool m_hideRemovedMarkers = true;
 
-        int m_ProfilerFirstFrameIndex = 0;
-        int m_ProfilerLastFrameIndex = 0;
+        internal int m_ProfilerFirstFrameIndex = 0;
+        internal int m_ProfilerLastFrameIndex = 0;
         const int k_ProfileDataDefaultDisplayOffset = 1;
 
         ActiveTab m_NextActiveTab = ActiveTab.Summary;
@@ -355,8 +355,7 @@ To compare two data sets:
             public static readonly Color threadSelected = new Color(0.6f, 0.0f, 0.6f);
         }
 
-        [SerializeField]
-        ProfileDataView m_ProfileSingleView;
+        [SerializeField] internal ProfileDataView m_ProfileSingleView;
         [SerializeField]
         ProfileDataView m_ProfileLeftView;
         [SerializeField]
@@ -379,7 +378,7 @@ To compare two data sets:
         }
 
         FrameTimeGraphGlobalSettings m_FrameTimeGraphGlobalSettings;
-        FrameTimeGraph m_FrameTimeGraph;
+        internal FrameTimeGraph m_FrameTimeGraph;
         FrameTimeGraph m_LeftFrameTimeGraph;
         FrameTimeGraph m_RightFrameTimeGraph;
         bool m_FrameTimeGraphsPaired = true;
@@ -1010,7 +1009,7 @@ To compare two data sets:
         }
 
         //Returns true if we were able to sync with the window, but not necessarily if the data is in sync
-        bool SyncWithProfilerWindow()
+        internal bool SyncWithProfilerWindow()
         {
             if (m_ProfilerWindowInterface.IsReady())
             {
@@ -1764,7 +1763,7 @@ To compare two data sets:
             return Int32.Parse(match.Groups[1].Value);
         }
 
-        void PullFromProfiler(int firstFrame, int lastFrame, ProfileDataView view, FrameTimeGraph frameTimeGraph)
+        internal void PullFromProfiler(int firstFrame, int lastFrame, ProfileDataView view, FrameTimeGraph frameTimeGraph)
         {
             m_ProgressBar.InitProgressBar("Pulling Frames from Profiler", "Please wait...", lastFrame - firstFrame);
 
